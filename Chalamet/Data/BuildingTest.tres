@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=2 format=3 uid="uid://bunwl68crc0j5"]
+
+[ext_resource type="Script" path="res://Scripts/BuildingData.gd" id="1_shik1"]
+
+[resource]
+script = ExtResource("1_shik1")
+test_text = "This is some teeeext"

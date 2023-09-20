@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dsy6vbkwef2cg"]
+
+[ext_resource type="Texture2D" uid="uid://cl3rt1ckliv8l" path="res://PNGs/bricks_wall_02_color_2k.png" id="1_deehl"]
+[ext_resource type="Texture2D" uid="uid://d1gy7gfxapm7" path="res://PNGs/bricks_wall_02_ambient_occlusion_2k.png" id="2_weufu"]
+[ext_resource type="Texture2D" uid="uid://veluqrgy4tkf" path="res://PNGs/bricks_wall_02_height_2k.png" id="3_kfo0c"]
+[ext_resource type="Texture2D" uid="uid://2k65sofutl22" path="res://PNGs/bricks_wall_02_normal_gl_2k.png" id="4_l2v3s"]
+[ext_resource type="Texture2D" uid="uid://dvua0a3ha37fm" path="res://PNGs/bricks_wall_02_roughness_2k.png" id="5_n14x3"]
+
+[resource]
+albedo_texture = ExtResource("1_deehl")
+roughness_texture = ExtResource("5_n14x3")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("4_l2v3s")
+ao_enabled = true
+ao_light_affect = 0.8
+ao_texture = ExtResource("2_weufu")
+ao_texture_channel = 4
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("3_kfo0c")

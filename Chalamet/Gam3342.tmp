@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdwjtpyejkw3x"]
+
+[ext_resource type="Script" path="res://Scripts/Placeable.gd" id="1_id7qh"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_s8fjs"]
+[ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="2_c53r1"]
+[ext_resource type="Shader" path="res://Tile.gdshader" id="2_xv311"]
+[ext_resource type="Material" uid="uid://dsy6vbkwef2cg" path="res://Bricks.tres" id="4_dhgcb"]
+[ext_resource type="PackedScene" uid="uid://b2wcka5s5p4pl" path="res://MainUI.tscn" id="5_v2alx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ngbkq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjcwj"]
+next_pass = ExtResource("4_dhgcb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfg8y"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uibat"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hv8gw"]
+render_priority = 0
+shader = ExtResource("2_xv311")
+shader_parameter/tile_color = Color(1, 1, 1, 1)
+shader_parameter/grout_color = Color(1, 1, 1, 1)
+shader_parameter/accent_color = Color(0.92, 0.7, 0.25, 1)
+shader_parameter/roughness = 0.595
+shader_parameter/use_normal_map = false
+shader_parameter/normal_intensity = 0.06
+shader_parameter/rotate_45 = false
+shader_parameter/tile_scale = 0.25
+shader_parameter/diamond_size = 0.565
+shader_parameter/grout_thickness = 0.0
+shader_parameter/diamond_accent_size = 0.582
+shader_parameter/grout_accent_size = 0.018
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_03jks"]
+size = Vector3(2, 0.1, 2)
+
+[node name="GameManager" type="Node3D" node_paths=PackedStringArray("mainUI")]
+script = ExtResource("1_s8fjs")
+mainUI = NodePath("CanvasLayer/Control")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, -0.342369, 0.877948, 0.33465, -0.364395, 0.204223, -0.908575, 0, 0.682511, -3.7976)
+light_color = Color(0.996078, 1, 0.521569, 1)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 4.2534, 11.5999, 4.91709)
+projection = 1
+current = true
+fov = 84.5078
+size = 20.0
+far = 400.0
+script = ExtResource("2_c53r1")
+speed = 2.0
+shift_speed = 10.0
+
+[node name="Box" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364614, 1.75571, 0.0394249)
+script = ExtResource("1_id7qh")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Box"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 5.21541e-08, 0, 2.23517e-08, 1, 1.30485, 1.15396, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/RigidBody3D"]
+mesh = SubResource("BoxMesh_ngbkq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jjcwj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/RigidBody3D"]
+shape = SubResource("BoxShape3D_xfg8y")
+
+[node name="Floor" type="Node3D" parent="."]
+transform = Transform3D(53.43, 0, 0, 0, 2, 0, 0, 0, 53.43, 0, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Floor"]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/RigidBody3D"]
+mesh = SubResource("PlaneMesh_uibat")
+surface_material_override/0 = SubResource("ShaderMaterial_hv8gw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/RigidBody3D"]
+transform = Transform3D(1.029, 0, 0, 0, 0.485, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_03jks")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" node_paths=PackedStringArray("gm") instance=ExtResource("5_v2alx")]
+gm = NodePath("../..")
