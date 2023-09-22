@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2wcka5s5p4pl"]
 
-[ext_resource type="Script" path="res://ConstructButton.gd" id="1_fowjb"]
 [ext_resource type="Script" path="res://Scripts/MainUI.gd" id="1_ubw8m"]
+[ext_resource type="Script" path="res://Scripts/ConstructButton.gd" id="2_hwhn0"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_ubw8m")
 
 [node name="Button" type="Button" parent="." node_paths=PackedStringArray("mainUI")]
@@ -18,5 +19,5 @@ offset_right = 85.0
 offset_bottom = 54.0
 text = "test"
 vertical_icon_alignment = 0
-script = ExtResource("1_fowjb")
+script = ExtResource("2_hwhn0")
 mainUI = NodePath("..")
