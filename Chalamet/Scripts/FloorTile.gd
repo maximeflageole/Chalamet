@@ -13,7 +13,7 @@ func _process(delta):
 	pass
 
 func _on_mouse_entered() -> void:
-	print("entered")
+	OnTileHovered.emit(self)
 
 func _on_mouse_exited():
-	print("exited")
+	pass
