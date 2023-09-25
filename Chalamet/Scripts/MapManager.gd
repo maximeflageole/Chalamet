@@ -15,6 +15,7 @@ func _ready():
 			_allTiles.append(newTile)
 			newTile.OnTileHovered.connect(SetCurrentTile)
 			newTile.global_position = Vector3(-50+i*5.1,0.2,-50+j*5.1)
+			newTile.SetCoordinates(i, j)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
