@@ -19,8 +19,13 @@ func _process(delta):
 		position.y += _yOffset
 	
 func _input(event):
+	if not inPlacement:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if (not _GM.CanPlaceBuilding()):
+				return
 			inPlacement = false
 			_placementMesh.visible = false
 			_rb.freeze = false
+			_GM.OnBuildingPlaced(self)

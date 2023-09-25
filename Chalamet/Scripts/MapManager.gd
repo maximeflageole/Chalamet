@@ -17,14 +17,16 @@ func _ready():
 			newTile.global_position = Vector3(-50+i*5.1,0.2,-50+j*5.1)
 			newTile.SetCoordinates(i, j)
 
-
+func CanPlaceBuilding() -> bool:
+	return not _currentSelectedTile.m_isOccupied
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
 func SetCurrentTile(floorTile: FloorTile):
-	_currentSelectedTile = floorTile
+	if (not floorTile.m_isOccupied):
+		_currentSelectedTile = floorTile
 
 func GetCurrentTile() -> FloorTile:
 	return _currentSelectedTile
-

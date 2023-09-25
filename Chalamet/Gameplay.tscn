@@ -1,15 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbo0vbe6no0d8"]
+[gd_scene load_steps=6 format=3 uid="uid://cbo0vbe6no0d8"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_s8fjs"]
 [ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="2_c53r1"]
 [ext_resource type="Resource" uid="uid://bunwl68crc0j5" path="res://Data/BuildingTest.tres" id="2_qcljd"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="4_gmksj"]
 [ext_resource type="PackedScene" uid="uid://b2wcka5s5p4pl" path="res://MainUI.tscn" id="5_v2alx"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_mea61"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5ct0"]
-albedo_color = Color(0.254902, 0.478431, 0.298039, 1)
 
 [node name="GameManager" type="Node3D" node_paths=PackedStringArray("mainUI", "_mapManager")]
 script = ExtResource("1_s8fjs")
@@ -23,11 +18,11 @@ light_color = Color(0.996078, 1, 1, 1)
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 4.2534, 11.5999, 4.91709)
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 44.253, 41.675, 44.917)
 projection = 1
 current = true
 fov = 84.5078
-size = 20.0
+size = 30.0
 far = 400.0
 script = ExtResource("2_c53r1")
 speed = 2.0
@@ -41,8 +36,3 @@ dimensions = Vector2i(20, 20)
 
 [node name="Control" parent="CanvasLayer" node_paths=PackedStringArray("gm") instance=ExtResource("5_v2alx")]
 gm = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.90998, 0, 0, 0, 2.90998, 0, 0, 0, 2.90998, -2, 1, -10.2019)
-mesh = SubResource("BoxMesh_mea61")
-surface_material_override/0 = SubResource("StandardMaterial3D_w5ct0")
