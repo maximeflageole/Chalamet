@@ -26,7 +26,7 @@ func _process(delta):
 	pass
 
 func OnButtonPressed():
-	var buildingPrefab = preload("res://Prefabs/building.tscn")
+	var buildingPrefab = preload("res://Prefabs/Building.tscn")
 	var building = buildingPrefab.instantiate()
 	building._GM = self
 	add_child(building)

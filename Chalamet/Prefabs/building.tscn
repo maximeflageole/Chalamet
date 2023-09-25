@@ -17,8 +17,11 @@ albedo_color = Color(0.482353, 0.498039, 0.117647, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1j3f8"]
 
-[node name="Building" type="Node3D"]
+[node name="Building" type="Node3D" node_paths=PackedStringArray("_rb", "_placementMesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 script = ExtResource("1_ktk6x")
+_rb = NodePath("RigidBody3D")
+_placementMesh = NodePath("MeshInstance3D2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -7.27097, 0)
