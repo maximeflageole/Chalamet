@@ -15,7 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (inPlacement):
-		position = _GM._currentSelectedTile.position
+		position = _GM.GetCurrentTile().position
 		position.y += _yOffset
 	
 func _input(event):
