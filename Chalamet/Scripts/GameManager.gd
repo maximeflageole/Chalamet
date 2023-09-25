@@ -14,12 +14,12 @@ func _ready():
 func _process(delta):
 	pass
 
-func OnButtonPressed():
-	var buildingPrefab = preload("res://Prefabs/Building.tscn")
+func OnButtonPressed(btn: ConstructButton):
+	var buildingPrefab = load(btn.m_buildingToBuild)
 	var building = buildingPrefab.instantiate()
 	building._GM = self
 	add_child(building)
-
+	
 func GetCurrentTile() -> FloorTile:
 	return _mapManager.GetCurrentTile()
 

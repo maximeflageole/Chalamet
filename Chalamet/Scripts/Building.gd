@@ -3,7 +3,7 @@ extends Node3D
 
 @export var inPlacement : bool = true
 @export var _rb : RigidBody3D
-@export var _placementMesh : MeshInstance3D
+@export var _placementMeshes : Array[MeshInstance3D]
 
 var _GM : GameManager
 var _yOffset : float = 8.471
@@ -26,6 +26,7 @@ func _input(event):
 			if (not _GM.CanPlaceBuilding()):
 				return
 			inPlacement = false
-			_placementMesh.visible = false
+			for mesh in _placementMeshes:
+				mesh.visible = false
 			_rb.freeze = false
 			_GM.OnBuildingPlaced(self)

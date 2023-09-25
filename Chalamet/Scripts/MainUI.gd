@@ -14,6 +14,4 @@ func _process(delta):
 	pass
 
 func OnBtnClicked(btn:ConstructButton):
-	gm.OnButtonPressed()
-
-
+	gm.OnButtonPressed(btn)
