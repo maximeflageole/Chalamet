@@ -37,11 +37,7 @@ func GetCurrentTile() -> FloorTile:
 func PlaceBuilding(building: Building):
 	#TODO MF: Clean this
 	var occupiedSpace = building._buildingData.OccupiedSpace
-	var root = sqrt(occupiedSpace.size())
-	for i in range(root):
-		for j in range(root):
-			if occupiedSpace[i*root + j]:
-				var realI = _currentSelectedTile.m_coordinates.x + i
-				var realJ = _currentSelectedTile.m_coordinates.y + j
-				_allTiles[realI][realJ].PlaceBuilding(building)
+	var actualOccupiedSpace = building.GetRotatedOccupiedEmplacement(_currentSelectedTile.m_coordinates)
+	for value in actualOccupiedSpace:
+		_allTiles[value.x][value.y].PlaceBuilding(building)
 	pass

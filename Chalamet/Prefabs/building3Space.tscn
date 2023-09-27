@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3lx2cuukuovu"]
+
+[ext_resource type="Script" path="res://Scripts/Building.gd" id="1_y1ttk"]
+[ext_resource type="Script" path="res://Scripts/BuildingData.gd" id="2_l8sui"]
+
+[sub_resource type="Resource" id="Resource_v8oh1"]
+script = ExtResource("2_l8sui")
+OccupiedSpace = Array[bool]([true, false, true, false, true, false, false, false, false])
+
+[sub_resource type="BoxMesh" id="BoxMesh_uxx55"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8sb0"]
+transparency = 1
+albedo_color = Color(0.454902, 0.709804, 0.380392, 0.603922)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fukv6"]
+friction = 0.5
+bounce = 0.18
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt228"]
+albedo_color = Color(0.482353, 0.498039, 0.117647, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1j3f8"]
+
+[node name="Building" type="Node3D" node_paths=PackedStringArray("_rb", "_placementMeshes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+script = ExtResource("1_y1ttk")
+_rb = NodePath("RigidBody3D")
+_placementMeshes = [NodePath("MeshInstance3D2"), NodePath("MeshInstance3D3"), NodePath("MeshInstance3D4")]
+_buildingData = SubResource("Resource_v8oh1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -7.27097, 0)
+mesh = SubResource("BoxMesh_uxx55")
+skeleton = NodePath("../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8sb0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, -7.271, -5)
+mesh = SubResource("BoxMesh_uxx55")
+skeleton = NodePath("../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8sb0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -7.271, -10)
+mesh = SubResource("BoxMesh_uxx55")
+skeleton = NodePath("../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8sb0")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_fukv6")
+gravity_scale = 5.0
+lock_rotation = true
+freeze = true
+linear_velocity = Vector3(0, -30, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("BoxMesh_uxx55")
+surface_material_override/0 = SubResource("StandardMaterial3D_mt228")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, 0, -5)
+mesh = SubResource("BoxMesh_uxx55")
+surface_material_override/0 = SubResource("StandardMaterial3D_mt228")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -10)
+mesh = SubResource("BoxMesh_uxx55")
+surface_material_override/0 = SubResource("StandardMaterial3D_mt228")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_1j3f8")

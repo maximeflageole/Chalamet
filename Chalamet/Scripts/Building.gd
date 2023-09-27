@@ -8,6 +8,7 @@ extends Node3D
 
 var _GM : GameManager
 var _yOffset : float = 8.471
+var _currentDirection = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,3 +32,41 @@ func _input(event):
 				mesh.visible = false
 			_rb.freeze = false
 			_GM.OnBuildingPlaced(self)
+
+func Rotate():
+	var axis = Vector3(0, 1, 0) # Or Vector3.UP
+	var rotation_amount = -90*PI/180
+	transform.basis = Basis(axis, rotation_amount) * transform.basis
+	_currentDirection += 1
+	_currentDirection %= 4
+
+func GetRotatedOccupiedEmplacement(origin: Vector2i) -> Array[Vector2i]:
+	var rotatedArray : Array[Vector2i]
+	var originalArray = _buildingData.OccupiedSpace
+	var sqrt = sqrt(originalArray.size())
+	
+	if (_currentDirection == 0):
+	##Cas non rotated
+		for i in range(sqrt):
+			for j in range(sqrt):
+				if (originalArray[i*sqrt + j] == true):
+					rotatedArray.append(Vector2i(origin.x + i, origin.y + j))
+	if (_currentDirection == 1):
+	##Cas 1 rotation
+		for i in range(sqrt):
+			for j in range(sqrt):
+				if (originalArray[i*sqrt + j] == true):
+					rotatedArray.append(Vector2i(origin.x + j, origin.y - i))
+	if (_currentDirection == 2):
+	##Cas 2 rotations
+		for i in range(sqrt):
+			for j in range(sqrt):
+				if (originalArray[i*sqrt + j] == true):
+					rotatedArray.append(Vector2i(origin.x - i, origin.y - j))
+	if (_currentDirection == 3):
+	##Cas 3 rotations
+		for i in range(sqrt):
+			for j in range(sqrt):
+				if (originalArray[i*sqrt + j] == true):
+					rotatedArray.append(Vector2i(origin.x - j, origin.y + i))
+	return rotatedArray

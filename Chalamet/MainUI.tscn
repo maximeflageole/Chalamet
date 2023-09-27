@@ -46,3 +46,15 @@ vertical_icon_alignment = 0
 script = ExtResource("2_hwhn0")
 mainUI = NodePath("..")
 m_buildingToBuild = "res://Prefabs/buildingXSpace.tscn"
+
+[node name="Button4" type="Button" parent="." node_paths=PackedStringArray("mainUI")]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 207.0
+offset_right = 186.0
+offset_bottom = 261.0
+text = "test 3 nodes building"
+vertical_icon_alignment = 0
+script = ExtResource("2_hwhn0")
+mainUI = NodePath("..")
+m_buildingToBuild = "res://Prefabs/building3Space.tscn"
