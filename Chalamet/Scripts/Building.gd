@@ -25,7 +25,7 @@ func _input(event):
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if (not _GM.CanPlaceBuilding()):
+			if (not _GM.CanPlaceBuilding(self)):
 				return
 			inPlacement = false
 			for mesh in _placementMeshes:
@@ -41,6 +41,8 @@ func Rotate():
 	_currentDirection %= 4
 
 func GetRotatedOccupiedEmplacement(origin: Vector2i) -> Array[Vector2i]:
+	#TODO MF: Do I need to say anything here?
+	#Well, it's functional...
 	var rotatedArray : Array[Vector2i]
 	var originalArray = _buildingData.OccupiedSpace
 	var sqrt = sqrt(originalArray.size())

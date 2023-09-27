@@ -29,8 +29,8 @@ func OnButtonPressed(btn: ConstructButton):
 func GetCurrentTile() -> FloorTile:
 	return _mapManager.GetCurrentTile()
 
-func CanPlaceBuilding() -> bool:
-	return _mapManager.CanPlaceBuilding()
+func CanPlaceBuilding(building: Building) -> bool:
+	return _mapManager.CanPlaceBuilding(GetCurrentTile().m_coordinates, building)
 	
 func OnBuildingPlaced(building: Building):
 	_mapManager.PlaceBuilding(building)
