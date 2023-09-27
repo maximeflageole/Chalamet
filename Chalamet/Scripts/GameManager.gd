@@ -27,6 +27,4 @@ func CanPlaceBuilding() -> bool:
 	return _mapManager.CanPlaceBuilding()
 	
 func OnBuildingPlaced(building: Building):
-	_mapManager.GetCurrentTile().PlaceBuilding(building)
-	_mapManager.GetCurrentTile().m_objectPlaced = building
-	pass
+	_mapManager.PlaceBuilding(building)

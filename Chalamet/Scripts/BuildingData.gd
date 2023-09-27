@@ -2,4 +2,6 @@ class_name BuildingData
 
 extends Resource
 
-@export var test_text : String
+
+##The array size must be a square number. It's x and y dimensions are the same
+@export var OccupiedSpace: Array[bool]

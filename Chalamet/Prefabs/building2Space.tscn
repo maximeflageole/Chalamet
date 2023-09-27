@@ -1,6 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cha6lwjmgaduu"]
+[gd_scene load_steps=9 format=3 uid="uid://cha6lwjmgaduu"]
 
 [ext_resource type="Script" path="res://Scripts/Building.gd" id="1_qsy5c"]
+[ext_resource type="Script" path="res://Scripts/BuildingData.gd" id="2_hie4f"]
+
+[sub_resource type="Resource" id="Resource_aanjq"]
+script = ExtResource("2_hie4f")
+OccupiedSpace = Array[bool]([true, true, false, false])
 
 [sub_resource type="BoxMesh" id="BoxMesh_uxx55"]
 
@@ -22,6 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 script = ExtResource("1_qsy5c")
 _rb = NodePath("RigidBody3D")
 _placementMeshes = [NodePath("MeshInstance3D2"), NodePath("MeshInstance3D3")]
+_buildingData = SubResource("Resource_aanjq")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -7.27097, 0)

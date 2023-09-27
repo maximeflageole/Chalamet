@@ -4,6 +4,7 @@ extends Node3D
 @export var inPlacement : bool = true
 @export var _rb : RigidBody3D
 @export var _placementMeshes : Array[MeshInstance3D]
+@export var _buildingData : BuildingData
 
 var _GM : GameManager
 var _yOffset : float = 8.471
