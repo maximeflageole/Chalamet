@@ -72,3 +72,6 @@ func GetRotatedOccupiedEmplacement(origin: Vector2i) -> Array[Vector2i]:
 				if (originalArray[i*sqrt + j] == true):
 					rotatedArray.append(Vector2i(origin.x - j, origin.y + i))
 	return rotatedArray
+	
+func CanPlace() -> bool:
+	return (_buildingData.HasConditionsMet())

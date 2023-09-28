@@ -6,6 +6,7 @@
 [sub_resource type="Resource" id="Resource_aanjq"]
 script = ExtResource("2_2twpw")
 OccupiedSpace = Array[bool]([true, false, true, false, true, false, true, false, true])
+ResourcesRequired = Array[int]([2])
 
 [sub_resource type="BoxMesh" id="BoxMesh_uxx55"]
 
@@ -25,6 +26,7 @@ albedo_color = Color(0.482353, 0.498039, 0.117647, 1)
 [node name="Building" type="Node3D" node_paths=PackedStringArray("_rb", "_placementMeshes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 script = ExtResource("1_kxeb6")
+inPlacement = null
 _rb = NodePath("RigidBody3D")
 _placementMeshes = [NodePath("MeshInstance3D2"), NodePath("MeshInstance3D3"), NodePath("MeshInstance3D4"), NodePath("MeshInstance3D5"), NodePath("MeshInstance3D6")]
 _buildingData = SubResource("Resource_aanjq")

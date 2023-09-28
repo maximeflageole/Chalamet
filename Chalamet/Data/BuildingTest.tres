@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_shik1")
 OccupiedSpace = Array[bool]([])
+ResourcesRequired = Array[int]([2])

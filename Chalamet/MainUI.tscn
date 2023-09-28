@@ -58,3 +58,15 @@ vertical_icon_alignment = 0
 script = ExtResource("2_hwhn0")
 mainUI = NodePath("..")
 m_buildingToBuild = "res://Prefabs/building3Space.tscn"
+
+[node name="Button5" type="Button" parent="." node_paths=PackedStringArray("mainUI")]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 277.0
+offset_right = 183.0
+offset_bottom = 331.0
+text = "Test need forest"
+vertical_icon_alignment = 0
+script = ExtResource("2_hwhn0")
+mainUI = NodePath("..")
+m_buildingToBuild = "res://Prefabs/building2SpaceNotPlaceable.tscn"

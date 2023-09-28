@@ -23,6 +23,8 @@ func _ready():
 			newTile.SetCoordinates(i, j)
 
 func CanPlaceBuilding(origin: Vector2i, building: Building) -> bool:
+	if (not building.CanPlace()):
+		return false
 	var occupiedBuildingSpace = building.GetRotatedOccupiedEmplacement(origin)
 	for space in occupiedBuildingSpace:
 		if not (dimensions.x > space.x && 0 <= space.x && 
