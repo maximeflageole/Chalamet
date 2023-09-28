@@ -25,6 +25,9 @@ func _ready():
 func CanPlaceBuilding(origin: Vector2i, building: Building) -> bool:
 	var occupiedBuildingSpace = building.GetRotatedOccupiedEmplacement(origin)
 	for space in occupiedBuildingSpace:
+		if not (dimensions.x > space.x && 0 <= space.x && 
+		dimensions.y > space.y && 0 <= space.y):
+			return false
 		if (_allTiles[space.x][space.y].m_isOccupied):
 			return false
 	return true
