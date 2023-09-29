@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://6na1hiagewck"]
+
+[ext_resource type="Script" path="res://Scripts/FloorTile.gd" id="1_4qwvk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3x86t"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibxkt"]
+albedo_color = Color(0.211765, 0.411765, 0.219608, 1)
+metallic = 0.2
+metallic_specular = 0.4
+roughness = 0.86
+rim_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8bhnq"]
+material = SubResource("StandardMaterial3D_ibxkt")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kwmvb"]
+friction = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3q38l"]
+size = Vector3(5, 0.1, 5)
+
+[node name="FloorTile" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9114, 5.07411, 0)
+script = ExtResource("1_4qwvk")
+resourceType = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3x86t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_8bhnq")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+input_ray_pickable = false
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_kwmvb")
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_3q38l")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

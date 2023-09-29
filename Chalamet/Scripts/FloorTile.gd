@@ -4,6 +4,8 @@ extends Area3D
 
 signal OnTileHovered(floorTile: FloorTile)
 
+@export var resourceType: GlobalEnums.EResourceType
+
 var m_coordinates : Vector2i = Vector2i(-1, -1)
 var m_isOccupied = false
 var m_objectPlaced : Building

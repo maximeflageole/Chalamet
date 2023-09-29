@@ -21,7 +21,7 @@ text = "test"
 vertical_icon_alignment = 0
 script = ExtResource("2_hwhn0")
 mainUI = NodePath("..")
-m_buildingToBuild = "res://Prefabs/building.tscn"
+m_buildingToBuild = "res://Prefabs/Buildings/building.tscn"
 
 [node name="Button2" type="Button" parent="." node_paths=PackedStringArray("mainUI")]
 layout_mode = 1
@@ -33,7 +33,7 @@ text = "test 2"
 vertical_icon_alignment = 0
 script = ExtResource("2_hwhn0")
 mainUI = NodePath("..")
-m_buildingToBuild = "res://Prefabs/building2Space.tscn"
+m_buildingToBuild = "res://Prefabs/Buildings/building2Space.tscn"
 
 [node name="Button3" type="Button" parent="." node_paths=PackedStringArray("mainUI")]
 layout_mode = 1
@@ -45,7 +45,7 @@ text = "test X shaped building"
 vertical_icon_alignment = 0
 script = ExtResource("2_hwhn0")
 mainUI = NodePath("..")
-m_buildingToBuild = "res://Prefabs/buildingXSpace.tscn"
+m_buildingToBuild = "res://Prefabs/Buildings/buildingXSpace.tscn"
 
 [node name="Button4" type="Button" parent="." node_paths=PackedStringArray("mainUI")]
 layout_mode = 1
@@ -57,7 +57,7 @@ text = "test 3 nodes building"
 vertical_icon_alignment = 0
 script = ExtResource("2_hwhn0")
 mainUI = NodePath("..")
-m_buildingToBuild = "res://Prefabs/building3Space.tscn"
+m_buildingToBuild = "res://Prefabs/Buildings/building3Space.tscn"
 
 [node name="Button5" type="Button" parent="." node_paths=PackedStringArray("mainUI")]
 layout_mode = 1
@@ -69,4 +69,4 @@ text = "Test need forest"
 vertical_icon_alignment = 0
 script = ExtResource("2_hwhn0")
 mainUI = NodePath("..")
-m_buildingToBuild = "res://Prefabs/building2SpaceNotPlaceable.tscn"
+m_buildingToBuild = "res://Prefabs/Buildings/building2SpaceNotPlaceable.tscn"
