@@ -42,7 +42,8 @@ func Rotate():
 
 func GetRotatedOccupiedEmplacement(origin: Vector2i) -> Array[Vector2i]:
 	#TODO MF: Do I need to say anything here?
-	#Well, it's functional...
+	#Well, it's functional... Only because my buildings always take
+	# the same x and y dimensions (in data)
 	var rotatedArray : Array[Vector2i]
 	var originalArray = _buildingData.OccupiedSpace
 	var sqrt = sqrt(originalArray.size())

@@ -64,14 +64,36 @@ func GetCurrentTile() -> FloorTile:
 func PlaceBuilding(building: Building):
 	#TODO MF: Clean this
 	var occupiedSpace = building._buildingData.OccupiedSpace
-	var actualOccupiedSpace = building.GetRotatedOccupiedEmplacement(_currentSelectedTile.m_coordinates)
-	for value in actualOccupiedSpace:
+	var rotatedOccupiedSpace = building.GetRotatedOccupiedEmplacement(_currentSelectedTile.m_coordinates)
+	for value in rotatedOccupiedSpace:
 		_allTiles[value.x][value.y].PlaceBuilding(building)
 	pass
 
+##This gets all of a building directly adjacent tiles, only once,
+#not including parts tiles occupied by the building itself
+func GetBuildingAdjacentTiles(building: Building) -> Array[FloorTile]:
+	var returnValue: Array[FloorTile] = []
+	var buildingPartsCoordinates = building.GetRotatedOccupiedEmplacement(_currentHoveredTile.m_coordinates)
+	for buildingPart in buildingPartsCoordinates:
+		var adjacentTiles = GetAdjacentTiles(buildingPart)
+		for tile in adjacentTiles:
+			#We found an adjacent tile
+			#Now, we eliminate it if it was already in our returnValue
+			# or if it is a part of our building
+			if returnValue.has(tile):
+				continue
+			if buildingPartsCoordinates.has(tile.m_coordinates):
+				continue
+			returnValue.append(tile)
+	return returnValue
+	
 func GetAdjacentTiles(coordinates: Vector2i) -> Array[FloorTile]:
 	var returnValue: Array[FloorTile] = []
 	
+	if (coordinates.x < 0 || coordinates.x > dimensions.x-1
+		|| coordinates.y < 0 || coordinates.y > dimensions.y-1):
+		return returnValue
+		
 	if (coordinates.x - 1 > 0):
 		returnValue.append(_allTiles[coordinates.x-1][coordinates.y])
 	if (coordinates.x + 1 <= dimensions.x-1):
@@ -89,7 +111,7 @@ func HasResourcesNeedsMet(building: Building):
 		&& resourcesRequired[0] == GlobalEnums.EResourceType.NONE):
 			return true
 	else:
-		var adjacentTiles = GetAdjacentTiles(_currentHoveredTile.m_coordinates)
+		var adjacentTiles = GetBuildingAdjacentTiles(building)
 		for resourceRequired in resourcesRequired:
 			if not HasResourceAdjacent(resourceRequired, adjacentTiles):
 				return false
