@@ -13,13 +13,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (_buildingInPlacement == null):
+		return
 	if Input.is_action_just_pressed("Rotate"):
-		if (_buildingInPlacement == null):
-			return
 		_buildingInPlacement.Rotate()
+	if Input.is_action_just_pressed("Cancel"):
+		_buildingInPlacement.Destroy()
+		_buildingInPlacement = null
 	pass
 
 func OnButtonPressed(btn: ConstructButton):
+	if (_buildingInPlacement != null):
+		return
 	var buildingPrefab = load(btn.m_buildingToBuild)
 	var building = buildingPrefab.instantiate()
 	building._GM = self

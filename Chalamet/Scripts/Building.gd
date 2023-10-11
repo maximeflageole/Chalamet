@@ -73,3 +73,8 @@ func GetRotatedOccupiedEmplacement(origin: Vector2i) -> Array[Vector2i]:
 				if (originalArray[i*sqrt + j] == true):
 					rotatedArray.append(Vector2i(origin.x - j, origin.y + i))
 	return rotatedArray
+
+func Destroy():
+	for child in self.get_children():
+		child.queue_free()
+	self.queue_free()
