@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ResourceNode" load_steps=2 format=3 uid="uid://57c3jj437umg"]
+
+[ext_resource type="Script" path="res://Scripts/ResourceNode.gd" id="1_klwu0"]
+
+[resource]
+script = ExtResource("1_klwu0")
+_resourcesSupply = Array[Resource("res://Scripts/Supply.gd")]([null, null])
