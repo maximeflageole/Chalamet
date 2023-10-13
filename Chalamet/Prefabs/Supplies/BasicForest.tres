@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Supply" load_steps=3 format=3 uid="uid://5qn22qjsvoff"]
+
+[ext_resource type="Texture2D" uid="uid://dq631krpswbdx" path="res://PNGs/WitchCraftIcons_46_t.PNG" id="1_gbyng"]
+[ext_resource type="Script" path="res://Scripts/Supply.gd" id="1_ukl7k"]
+
+[resource]
+script = ExtResource("1_ukl7k")
+_sprite = ExtResource("1_gbyng")
+_name = "Forest"
+_enumValue = 1

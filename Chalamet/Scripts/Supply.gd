@@ -1,6 +1,6 @@
 class_name Supply
 
-extends Node
+extends Resource
 
 @export var _sprite: Texture2D
 @export var _name: String

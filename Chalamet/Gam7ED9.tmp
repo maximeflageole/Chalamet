@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbo0vbe6no0d8"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_s8fjs"]
+[ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="2_c53r1"]
+[ext_resource type="Resource" uid="uid://bunwl68crc0j5" path="res://Data/BuildingTest.tres" id="2_qcljd"]
+[ext_resource type="Script" path="res://Scripts/MapManager.gd" id="4_gmksj"]
+[ext_resource type="PackedScene" uid="uid://b2wcka5s5p4pl" path="res://MainUI.tscn" id="5_v2alx"]
+
+[node name="GameManager" type="Node3D" node_paths=PackedStringArray("mainUI", "_mapManager")]
+script = ExtResource("1_s8fjs")
+mainUI = NodePath("CanvasLayer/Control")
+buildingsData = Array[Resource("res://Scripts/BuildingData.gd")]([ExtResource("2_qcljd")])
+_mapManager = NodePath("MapManager")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, -0.342369, 0.877948, 0.33465, -0.364395, 0.204223, -0.908575, 0, 0.682511, -3.7976)
+light_color = Color(0.996078, 1, 1, 1)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 44.253, 41.675, 44.917)
+projection = 1
+current = true
+fov = 84.5078
+size = 30.0
+far = 400.0
+script = ExtResource("2_c53r1")
+speed = 2.0
+shift_speed = 10.0
+
+[node name="MapManager" type="Node3D" parent="." node_paths=PackedStringArray("_GM")]
+script = ExtResource("4_gmksj")
+dimensions = Vector2i(20, 20)
+_GM = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" node_paths=PackedStringArray("gm") instance=ExtResource("5_v2alx")]
+gm = NodePath("../..")

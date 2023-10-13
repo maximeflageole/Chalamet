@@ -5,6 +5,7 @@ extends Node3D
 @export var _rb : RigidBody3D
 @export var _placementMeshes : Array[MeshInstance3D]
 @export var _buildingData : BuildingData
+@export var _suppliesTexture : TextureRect
 
 var _GM : GameManager
 var _yOffset : float = 8.471
@@ -19,6 +20,12 @@ func _process(delta):
 	if (inPlacement):
 		position = _GM.GetCurrentTile().position
 		position.y += _yOffset
+		
+func _physics_process(delta):
+	var pos = _rb.get_position() + get_position()
+	var cam = get_viewport().get_camera_3d()
+	var screenPos = cam.unproject_position(pos)
+	_suppliesTexture.set_position(Vector2(screenPos.x, screenPos.y - 50))
 	
 func _input(event):
 	if not inPlacement:
