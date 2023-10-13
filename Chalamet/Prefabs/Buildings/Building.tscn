@@ -31,6 +31,7 @@ _rb = NodePath("RigidBody3D")
 _placementMeshes = [NodePath("MeshInstance3D2")]
 _buildingData = SubResource("Resource_50iw4")
 _suppliesTexture = NodePath("RigidBody3D/MeshInstance3D/TextureRect")
+_suppliesTextureOffset = Vector2(-20, -70)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -7.27097, 0)

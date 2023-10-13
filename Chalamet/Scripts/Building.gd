@@ -6,6 +6,7 @@ extends Node3D
 @export var _placementMeshes : Array[MeshInstance3D]
 @export var _buildingData : BuildingData
 @export var _suppliesTexture : TextureRect
+@export var _suppliesTextureOffset : Vector2
 
 var _GM : GameManager
 var _yOffset : float = 8.471
@@ -25,7 +26,7 @@ func _physics_process(delta):
 	var pos = _rb.get_position() + get_position()
 	var cam = get_viewport().get_camera_3d()
 	var screenPos = cam.unproject_position(pos)
-	_suppliesTexture.set_position(Vector2(screenPos.x, screenPos.y - 50))
+	_suppliesTexture.set_position(Vector2(screenPos.x, screenPos.y) + _suppliesTextureOffset)
 	
 func _input(event):
 	if not inPlacement:
